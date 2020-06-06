@@ -23,28 +23,12 @@ function addProductToList(nombreProducto, descripcion, imagen, categoria, color,
     saveJSONfile(productos);
 }
 // Busca un producto por su id
-<<<<<<< HEAD
-   searchByCode: function(codigo){
-    let archivoJson = readJSONfile();
-    let producto = null;
-    archivoJson.forEach((prod, i) => {
-      if (prod["codigo"] == codigo) {
-         producto = prod;
-      }
-    });
-    return producto; // si no lo encuentra devuelve null
-}
-// Eliminar producto
-delete_deleteProduct: function(req, res){
-    let producto = productoController.searchByCode(req.params.codigo);
-=======
 function buscarTodos() {
     let productos = readJSONfile();
     return productos; // si no lo encuentra devuelve null
 }
 //Modificar producto
 function modificar(id, nombreProducto, descripcion, imagen, categoria, color, precio) {
->>>>>>> f7a72f39378e7535524777dae6c2287f03e0fdfb
     let productos = readJSONfile();
     for (var i = 0; i < (productos.length); i++) {
         let cursor = productos[i];
