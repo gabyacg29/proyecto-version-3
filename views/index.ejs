@@ -1,26 +1,21 @@
-    <%- include('./partials/head.ejs')%>
+<%- include('./partials/head.ejs')%> <%- include('./partials/header.ejs')%>
 
-    <%- include('./partials/header.ejs')%>
-    
+<!-- Banner -->
+<div class="banner">
+  <img src="img/vinos1.jpg" alt="imagen de producto" />
+</div>
+<!-- /Banner -->
 
-    <!-- Banner -->
-    <div class="banner">
-         <img src="img/vinos1.jpg" alt="imagen de producto">
+<!-- ultima visita -->
+<div class="container products-wrapper">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="products-title">Vinos</h2>
     </div>
-    <!-- /Banner -->
+    <!-- Bucle sistema recorre array de objetos que envia el controlador y para cada obejto levanta un template de producto-->
+    <% for( var i=0; i<(data.length); i++){ %> <%- include('./producto.ejs') %>
+    <% } %>
+  </div>
+</div>
 
-    <!-- ultima visita -->
-    <div class="container products-wrapper">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="products-title">Vinos</h2>
-            </div>
-            <!-- Bucle sistema recorre array de objetos que envia el controlador y para cada obejto levanta un template de producto-->
-            <% for( var i=0; i<(data.length); i++){ %>
-                <%- include('./producto.ejs') %>
-            <% } %>
-       
-       </div>
-    </div>
-
-    <%- include('./partials/footer.ejs') %>
+<%- include('./partials/footer.ejs') %>
