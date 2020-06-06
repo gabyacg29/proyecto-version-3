@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../public/stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="../public/stylesheets/style.css">
-    <link rel="stylesheet" href="../public/stylesheets/font-awesome/css/font-awesome.min.css">
-    <title>Wine Store</title>
-</head>
+    <%- include('./partials/head.ejs')%>
 
 <body>
-    <%-include('./partials/header.ejs')%>
+    <%- include('./partials/header.ejs')%>
     
 
     <!-- Banner -->
@@ -154,7 +147,7 @@
            </section>
        </div>
        <div class="col-12 col-sm-6 col-lg-3">
-           <section class="product-box">
+            <section class="product-box">
                <a href="">
                    <figure class="product-box_image">
                        <img src="/public/img/productos/bodegas-bianchi-famiglia-organico-2020_280x.jpg"
@@ -167,7 +160,23 @@
                        <i class="fas fa-cart-plus"></i>
                    </article>
                </a>
-           </section>
+            </section>
+       </div>
+       <div class="col-12 col-sm-6 col-lg-3">
+            <section class="product-box">
+               <a href="">
+                   <figure class="product-box_image">
+                       <img src="/public/img/productos/bodegas-bianchi-famiglia-organico-2020_280x.jpg"
+                           alt="imagen de producto">
+                   </figure>
+                   <article class="product-box_data">
+                       <h2>$500</h2>
+                       <span>40% OFF</span>
+                       <p>Vino 1</p>
+                       <i class="fas fa-cart-plus"></i>
+                   </article>
+               </a>
+            </section>
        </div>
        <div class="col-12 col-sm-6 col-lg-3">
            <section class="product-box">
@@ -183,23 +192,7 @@
                        <i class="fas fa-cart-plus"></i>
                    </article>
                </a>
-           </section>
-       </div>
-       <div class="col-12 col-sm-6 col-lg-3">
-           <section class="product-box">
-               <a href="">
-                   <figure class="product-box_image">
-                       <img src="/public/img/productos/bodegas-bianchi-famiglia-organico-2020_280x.jpg"
-                           alt="imagen de producto">
-                   </figure>
-                   <article class="product-box_data">
-                       <h2>$500</h2>
-                       <span>40% OFF</span>
-                       <p>Vino 1</p>
-                       <i class="fas fa-cart-plus"></i>
-                   </article>
-               </a>
-           </section>
+            </section>
        </div>
        <div class="col-12 col-sm-6 col-lg-3">
            <section class="product-box">
@@ -227,8 +220,9 @@
     <%- include('./partials/footer.ejs') %>
 
     <script src="../public/javascripts/jquery.js"></script>
+     <script src="../public/javascripts/popper.js"></script>
     <script src="../public/javascripts/bootstrap.min.js"></script>
-    <script src="../public/javascripts/popper.js"></script>
+   
 </body>
 
 </html>
