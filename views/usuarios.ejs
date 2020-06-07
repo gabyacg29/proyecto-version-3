@@ -1,0 +1,72 @@
+<%- include('./partials/head.ejs')%> <%- include('./partials/header.ejs')%>
+<%# --------INICIO----------- %>
+<body>
+  <div class="row">
+  <div class="col-12">
+    <div class="text-center">
+        <h3 class="ingresar"><br>Ingresar<i class="fas fa-sign-in-alt"></i></h3>
+
+        <form action="#" method="post">
+          <p><input type="email" name="email" id="email" class="uno" placeholder="Email" /></p>
+          <p>
+            <input
+              type="password" name="contraseña" id="contraseña" class="uno" placeholder="Contraseña"
+            />
+          </p>
+
+          <p id="btn-form">
+            <button type="button" class="btn btn-primary">Enviar</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<%# --------REGISTRO----------- %>
+<body>
+<tr>
+  <td>
+<div class="row">
+      <div class="col-12">
+        <div class="text-center">    
+            <h2>¿No estas registrado?</h2>
+            <br />
+            <form
+              method="POST"
+              action="/register"
+              enctype="multipart/form-data"
+            >
+            <div class="form-group"> 
+              <input name="username" id="username" type="text" placeholder="Nombre"/>
+              <br />
+              <br />
+              <input name="lastname" type="text" placeholder="Apellido"/>
+              <br />
+              <br />
+              <input name="email" type="email" placeholder="Email" />
+              <br />
+              <br />
+              <input name="password" type="password" placeholder="Contraseña"/>
+              <br />
+              <br />
+<input name="password2" type="password" placeholder="Repetir contraseña"/>
+              <br />
+              <br />
+              <label for="avatar">Avatar</label> 
+              <input type="file" name="avatar" accept=".jpg" />
+              <input
+                class="habilitado"
+                value="Ingresar"
+                name="submit"
+                type="submit"
+              />
+            </form>
+          </div>
+        </div>
+      </div> 
+    </div>
+    </td>
+</tr>
+</body>
+<%- include('./partials/footer.ejs')%>
+
