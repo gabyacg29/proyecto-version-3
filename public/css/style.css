@@ -74,15 +74,16 @@ body {
 }
 
 /*----Boton buscar del menu----*/
-.btn-success {
+.btn-buscar {
   border: none;
   background-color: #343a40 !important;
   color: white;
 }
-.form-inline{
+/*----Formulario buscar del menu----*/
+.form-buscar{
    margin: auto;
 }
-.form-control{
+.inp-buscar{
    max-width: 100px;
    height: 25px;
 }
