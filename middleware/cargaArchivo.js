@@ -17,7 +17,7 @@ var storage = multer.diskStorage({
   });
 
 function subir (req, res, next){
-    var upload = multer({ storage : storage}).single('userFile');
+    var imagen = multer({ storage : storage}).single('userFile');
     upload(req,res,function(err) {
         if(err) {
             return res.redirect("/products/create");

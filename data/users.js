@@ -10,16 +10,18 @@ function saveJSONfile(objetos) {
 }
 //-----------------------------------------//
 // Alta de usuario
-function agregarUsuario(nombre, apellido, email, contrasenia, categoria, imagen) {
+function agregarUsuario(nombre, apellido, email, contrasenia, categoria, upload) {
    let nuevoUsuario = {
       Nombre: nombre,
       Apellido: apellido,
       Email: email,
       Contrasenia: contrasenia,
       Categoria: categoria,
-      Imagen: imagen,
+      Imagen: upload,
    };
+   console.log(nuevoUsuario);
    let usuarios = readJSONfile();
+   console.log(usuarios);
    usuarios.push(nuevoUsuario);
    saveJSONfile(usuarios);
 }
