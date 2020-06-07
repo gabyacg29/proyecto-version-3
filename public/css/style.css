@@ -98,7 +98,9 @@ body {
 
 
 
-
+.hidden{
+  display: none;
+}
 
 
 
