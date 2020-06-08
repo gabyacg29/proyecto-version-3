@@ -17,12 +17,12 @@
             <div class="col-sm-12 modal-age">
                 <h2>Bienvenido</h2>
                 <p>¿Sos mayor de edad?</p>
-                <div class="modal-footer">
-                    <button type="button" class="submit" data-dismiss="modal">SI</button>
-                    <button type="button" class="submit">NO</button>
-
-                </div>
-                
+                       
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="submit" data-dismiss="modal">SI</button>
+                <button type="button" class="submit">NO</button>
+            
             </div>
         </div>
     </div>
@@ -79,9 +79,7 @@
       <h2 class="products-title">Vinos</h2>
     </div>
     <!-- Bucle sistema recorre array de objetos que envia el controlador y para cada obejto levanta un template de producto -->
-            <% for( var i=0; i<(productos.length); i++) { %>
-                <%- include('./producto.ejs')  %>
-            <% } %>
+           
 
 
   </div>
