@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "Nombre": "Nombre de Prueba",
+    "Apeliido": "Apellido de Prueba",
+    "Email": "Email de Prueba",
+    "Contrasenia": "Contrasenia",
+    "Categoria": "Categoria de Prueba",
+    "Imagen": "ImagenLink"
+  },
+  {
+    "id": 2,
+    "Nombre": "Nombre de Prueba",
+    "Apellido": "Apellido de Prueba",
+    "Email": "mailDePrueba@gmail.com",
+    "Contrasenia": "123",
+    "Categoria": "Categ",
+    "Imagen": "linkavatar"
+  }
+]

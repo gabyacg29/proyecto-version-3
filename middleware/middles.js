@@ -1,4 +1,4 @@
-var cargaArchivo = require('cargaArchivo');
+var cargaArchivo = require('./cargaArchivo');
 var cargaAvatar = require('./cargaAvatar');
 
 module.exports = {

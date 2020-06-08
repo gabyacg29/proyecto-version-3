@@ -2,6 +2,7 @@
 <%- include('./partials/head.ejs')%> 
 <%- include('./partials/header.ejs')%>
 
+<<<<<<< HEAD
 <!-- Ventana Modal -- Si es mayor o no? -->
 <input type="checkbox" id="cerrar">
 <label for="cerrar" id="btn-cerrar"></label>
@@ -29,6 +30,8 @@
 </div>
 
 
+=======
+>>>>>>> 77c0b81e3265ecb12464e5c4de5a2889d6158e0d
 <!-- Carrusel -->
 <div class="bd-example">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -38,7 +41,7 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active style=100vh">
-                <img class="d-block w-100"
+                <img class="d-block w-100 banner"
                     data-src="holder.js/700x350?auto=yes&amp;bg=777&amp;fg=555&amp;text=First slide"
                     alt="First slide [900x300]"
                     src="../public/img/vinos1.jpg"
@@ -48,7 +51,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100"
+                <img class="d-block w-100 banner"
                     data-src="holder.js/700x350?auto=yes&amp;bg=666&amp;fg=444&amp;text=Second slide"
                     alt="Second slide [900x300]"
                     src="../public/img/vinos2.jpg"
@@ -79,7 +82,10 @@
       <h2 class="products-title">Vinos</h2>
     </div>
     <!-- Bucle sistema recorre array de objetos que envia el controlador y para cada obejto levanta un template de producto -->
-           
+            <% for( var i=0; i<(productos.length); i++) { %>
+            <%- include('./producto.ejs')  %>
+            <% } %>
+
 
 
   </div>

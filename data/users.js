@@ -1,25 +1,30 @@
 const fs = require('fs');
+var path = require('path');
 
 // Lee el archivo Json y devuelve objeto literal
 function readJSONfile() {
-   return JSON.parse(fs.readFileSync(users.JSON, 'utf-8'));
+   let archivo = fs.readFileSync(path.join(__dirname, '..') + '/data/users.json');
+   let usuarioss = JSON.parse(archivo);
+   return usuarioss;
 }
 // Guarda el json de usuarios
 function saveJSONfile(objetos) {
-   fs.writeFileSync(users.file, JSON.stringify(objetos, null, ''));
+   fs.writeFileSync(path.join(__dirname, '..') + '/data/users.json', JSON.stringify(objetos, null, ' '));
 }
 //-----------------------------------------//
 // Alta de usuario
-function agregarUsuario(nombre, apellido, email, contrasenia, categoria, imagen) {
+function agregarUsuario(nombre, apellido, email, contrasenia, categoria, upload) {
    let nuevoUsuario = {
       Nombre: nombre,
       Apellido: apellido,
       Email: email,
       Contrasenia: contrasenia,
       Categoria: categoria,
-      Imagen: imagen,
+      Imagen: upload,
    };
+   console.log(nuevoUsuario);
    let usuarios = readJSONfile();
+   console.log(usuarios);
    usuarios.push(nuevoUsuario);
    saveJSONfile(usuarios);
 }
