@@ -3,15 +3,13 @@ var path = require('path');
 
 // Lee el archivo Json y devuelve objeto literal
 function readJSONfile() {
-   let archivo = fs.readFileSync(path.join(__dirname, '..') + '/data/users.json',);
-   console.log(archivo);
+   let archivo = fs.readFileSync(path.join(__dirname, '..') + '/data/users.json');
    let usuarioss = JSON.parse(archivo);
-   console.log(usuarioss);
    return usuarioss;
 }
 // Guarda el json de usuarios
 function saveJSONfile(objetos) {
-   fs.writeFileSync(users.file, JSON.stringify(objetos, null, ''));
+   fs.writeFileSync(path.join(__dirname, '..') + '/data/users.json', JSON.stringify(objetos, null, ' '));
 }
 //-----------------------------------------//
 // Alta de usuario
