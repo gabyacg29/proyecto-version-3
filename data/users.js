@@ -1,8 +1,13 @@
 const fs = require('fs');
+var path = require('path');
 
 // Lee el archivo Json y devuelve objeto literal
 function readJSONfile() {
-   return JSON.parse(fs.readFileSync(users.JSON, 'utf-8'));
+   let archivo = fs.readFileSync(path.join(__dirname, '..') + '/data/users.json',);
+   console.log(archivo);
+   let usuarioss = JSON.parse(archivo);
+   console.log(usuarioss);
+   return usuarioss;
 }
 // Guarda el json de usuarios
 function saveJSONfile(objetos) {
