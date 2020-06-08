@@ -6,14 +6,14 @@ let formularioIngreso = (req, res) => {
   let data = {
     Formulario: "UsuarioRegistrado",
   };
-  res.render("usuarios", { data: data });
+  res.render("usuarios", data);
 };
 
 let validacionUsuario = (req, res) => {
   let { mail, contrasenia } = req.body;
   let usuarioExiste = modelUsers.Consulta(mail);
-  if (usuarioExiste != undefined && usuarioExiste.Contrasenia == contrasenia) {
-    res.redirect("/home");
+  if ((usuarioExiste != null) && (usuarioExiste.Contrasenia == contrasenia)) {
+    res.redirect("/");
   } else {
     res.redirect("/users/login");
   }
@@ -24,7 +24,7 @@ let formularioRegistro = (req, res) => {
   let data = {
     Formulario: "FormularioRegistro",
   };
-  res.render("usuarios", { data: data });
+  res.render("usuarios", data);
 };
 // funcion para realizar el registro de nuevo ususario
 let registrandoUsuario = (req, res) => {
@@ -45,15 +45,20 @@ let registrandoUsuario = (req, res) => {
     res.redirect("/users/register");
   }
 };
+// 
 let formularioEdicion = (req, res) => {
   res.render("index", { title: "Formulario de Edicion" });
   // momentaneamente sin utilizar.
 };
 let detalleUsuario = (req, res) => {
   let { email } = req.session.user;
-  let usuarioExiste = modelUsers.Consulta(mail);
-  if (usuarioExiste != undefined) {
-    res.render("index", { usuario: usuarioExiste });
+  let usuarioExiste = modelUsers.Consulta(email);
+  if (usuarioExiste != null) {
+    let data = {
+      Formulario: 'MisDatos',
+      usuario: usuarioExiste,
+    };
+    res.render("usuarios", data);
   } else {
     res.redirect("/users/login");
   }

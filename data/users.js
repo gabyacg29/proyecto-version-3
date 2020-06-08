@@ -42,7 +42,7 @@ function agregarUsuario(nombre, apellido, email, contrasenia, categoria, upload)
 //Consulta de usuario
 function buscarPorEmail(email) {
    let usuarios = readJSONfile();
-   let user = undefined;
+   let user = null;
    for (var i = 0; i < (usuarios.length); i++) {
       let cursor = usuarios[i];
       if (email == cursor.Email) {
