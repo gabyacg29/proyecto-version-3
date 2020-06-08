@@ -1,5 +1,4 @@
 var modelUsers = require("../data/users.js");
-var multer  =   require('multer');
 
 // funcion para devolver el formulario de ingreso de usuario ya registrado
 let formularioIngreso = (req, res) => {
@@ -10,9 +9,9 @@ let formularioIngreso = (req, res) => {
 };
 
 let validacionUsuario = (req, res) => {
-  let { mail, contrasenia } = req.body;
-  let usuarioExiste = modelUsers.Consulta(mail);
-  if ((usuarioExiste != null) && (usuarioExiste.Contrasenia == contrasenia)) {
+  let { email, contrasenia } = req.body;
+  let usuarioExiste = modelUsers.Consulta(email);
+  if (usuarioExiste != null && usuarioExiste.Contrasenia == contrasenia) {
     res.redirect("/");
   } else {
     res.redirect("/users/login");
@@ -36,8 +35,7 @@ let registrandoUsuario = (req, res) => {
     contrasenia2,
     categoria,
   } = req.body;
-  let imagen = req.file.filename
-  console.log(req.file);
+  let imagen = req.file.filename; // se toma el nombre del archivo
   if (contrasenia == contrasenia2) {
     modelUsers.Alta(nombre, apellido, email, contrasenia, categoria, imagen);
     res.redirect("/users/login");
@@ -45,7 +43,7 @@ let registrandoUsuario = (req, res) => {
     res.redirect("/users/register");
   }
 };
-// 
+//
 let formularioEdicion = (req, res) => {
   res.render("index", { title: "Formulario de Edicion" });
   // momentaneamente sin utilizar.
@@ -55,7 +53,7 @@ let detalleUsuario = (req, res) => {
   let usuarioExiste = modelUsers.Consulta(email);
   if (usuarioExiste != null) {
     let data = {
-      Formulario: 'MisDatos',
+      Formulario: "MisDatos",
       usuario: usuarioExiste,
     };
     res.render("usuarios", data);
