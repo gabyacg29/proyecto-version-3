@@ -6,11 +6,20 @@ function readJSONfile() {
    let archivo = fs.readFileSync(path.join(__dirname, '..') + '/data/users.json');
    let usuarioss = JSON.parse(archivo);
    return usuarioss;
-}
+};
 // Guarda el json de usuarios
 function saveJSONfile(objetos) {
    fs.writeFileSync(path.join(__dirname, '..') + '/data/users.json', JSON.stringify(objetos, null, ' '));
-}
+};
+// Ordenar Arreglo de Mayor a Menor
+function ordenar (arreglo) {
+   let arregloOrdenado = arreglo.sort( function (x, y) {
+       if (x.id > y.id) { return -1; }
+       else if (x.id < y.id) { return 1; }
+       else { return 0; }
+   });
+   return arregloOrdenado;
+};
 //-----------------------------------------//
 // Alta de usuario
 function agregarUsuario(nombre, apellido, email, contrasenia, categoria, upload) {
@@ -22,9 +31,11 @@ function agregarUsuario(nombre, apellido, email, contrasenia, categoria, upload)
       Categoria: categoria,
       Imagen: upload,
    };
-   console.log(nuevoUsuario);
    let usuarios = readJSONfile();
-   console.log(usuarios);
+   let ordenado = ordenar(usuarios);
+   let nuevoid = ordenado[0].id + 1;
+   nuevoUsuario.id = nuevoid;
+   console.log(nuevoUsuario);
    usuarios.push(nuevoUsuario);
    saveJSONfile(usuarios);
 }
