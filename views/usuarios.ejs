@@ -18,7 +18,7 @@
     <% } %>
     <% if(data.Formulario == 'FormularioRegistro') { %>
       <h3 class="pb-3">Registrarse</h3>
-        <form action="register" method="post" >
+        <form action="register" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input type="text" class="form-control" id="nombre" name="nombre"/>
@@ -47,7 +47,7 @@
             <div class="input-group justify-content-center align-items-center">
                 <label class="input-group-btn">
                     <span class="btn btn-secondary btn-file">
-                        Subir Imagen <input accept=".jpg,.png,.jpeg,.gif" name="imagen" type="file" id="Imagen" class="hidden">
+                        Subir Imagen <input accept=".jpg,.png,.jpeg,.gif" name="avatar" type="file" id="avatar" required class="hidden">
                     </span>
                 </label>
             </div>

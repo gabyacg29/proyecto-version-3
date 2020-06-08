@@ -1,29 +1,16 @@
-var multer = require("multer");
-var fs = require("fs");
+const path = require("path");
+const mime = require("mime");
+const Multer = require("multer");
 
-var storage = multer.diskStorage({
-  destination: function (req, file, callback) {
-    fs.mkdir("img/avatar", function (err) {
-      if (err) {
-        console.log(err.stack);
-      } else {
-        callback(null, "img/avatar");
-      }
-    });
-  },
-  filename: function (req, file, callback) {
-    callback(null, file.fieldname + "-" + Date.now());
-  },
-});
-var upload = multer({ storage: storage }).single("image");
+var CargandoAvatar = Multer({
+  storage: Multer.diskStorage({
+    destination: function (req, file, callback) {
+      callback(null, path.join(__dirname, "../public/img/avatar"));
+    },
+    filename: function (req, file, callback) {
+      callback(null, file.fieldname + "-" + Date.now());
+    },
+  }),
+}).single("avatar");
 
-function subir(req, res, next) {
-  upload(req, res, function (err) {
-    if (err) {
-      return res.redirect("/users/register");
-    }
-    next();
-  });
-}
-
-module.exports = subir;
+module.exports = CargandoAvatar;

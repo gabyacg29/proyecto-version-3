@@ -35,7 +35,6 @@ function agregarUsuario(nombre, apellido, email, contrasenia, categoria, upload)
    let ordenado = ordenar(usuarios);
    let nuevoid = ordenado[0].id + 1;
    nuevoUsuario.id = nuevoid;
-   console.log(nuevoUsuario);
    usuarios.push(nuevoUsuario);
    saveJSONfile(usuarios);
 }

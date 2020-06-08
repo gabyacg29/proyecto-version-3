@@ -1,7 +1,7 @@
-var cargaArchivo = require('./cargaArchivo');
+var cargaProducto = require('./cargaArchivo');
 var cargaAvatar = require('./cargaAvatar');
 
 module.exports = {
-    CargaArchivo: cargaArchivo,
+    CargaProducto: cargaProducto,
     CargarAvatar: cargaAvatar,
 };

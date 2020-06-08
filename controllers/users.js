@@ -1,4 +1,5 @@
 var modelUsers = require("../data/users.js");
+var multer  =   require('multer');
 
 // funcion para devolver el formulario de ingreso de usuario ya registrado
 let formularioIngreso = (req, res) => {
@@ -25,6 +26,7 @@ let formularioRegistro = (req, res) => {
   };
   res.render("usuarios", { data: data });
 };
+// funcion para realizar el registro de nuevo ususario
 let registrandoUsuario = (req, res) => {
   let {
     nombre,
@@ -33,12 +35,13 @@ let registrandoUsuario = (req, res) => {
     contrasenia,
     contrasenia2,
     categoria,
-    imagen,
   } = req.body;
+  let imagen = req.file.filename
+  console.log(req.file);
   if (contrasenia == contrasenia2) {
-    modelUsers.Alta(nombre, apellido, email, contrasenia, categoria, 'linkavatar');
+    modelUsers.Alta(nombre, apellido, email, contrasenia, categoria, imagen);
     res.redirect("/users/login");
-  } else{
+  } else {
     res.redirect("/users/register");
   }
 };
