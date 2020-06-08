@@ -2,11 +2,12 @@ const fs = require('fs');
 
 // Lee el archivo Json
 function readJSONfile() {
-    return JSON.parse(fs.readFileSync(productoController.archivo, 'utf-8'));
+let archivo = fs.readFileSync(path.join(__dirname, '..') + '/data/products.json');
+let productos = JSON.parse(archivo);
 }
 // Guarda el json de productos
-function saveJSONfile(productos) {
-    fs.writeFileSync(productoController.archivo, JSON.stringify(productos, null, ' '));
+function saveJSONfile(objetos) {
+    fs.writeFileSync(path.join(__dirname, '..') + '/data/products.json', JSON.stringify(objetos, null, ' '));
 }
 // Agrega un nuevo producto a la lista de productos
 function addProductToList(nombreProducto, descripcion, imagen, categoria, color, precio); {
@@ -52,7 +53,7 @@ function modificar(id, nombreProducto, descripcion, imagen, categoria, color, pr
  }
     }
     saveJSONfile(productos);
-}
+
 // Eliminar producto
 function eliminarProducto(idDeProducto) {
     let productos = readJSONfile();
