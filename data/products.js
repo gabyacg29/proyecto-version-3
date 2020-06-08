@@ -9,6 +9,14 @@ let productos = JSON.parse(archivo);
 function saveJSONfile(objetos) {
     fs.writeFileSync(path.join(__dirname, '..') + '/data/products.json', JSON.stringify(objetos, null, ' '));
 }
+// Ordenar Arreglo de Mayor a Menor
+function ordenar (arreglo) {
+    let arregloOrdenado = arreglo.sort( function (x, y) {
+        if (x.id > y.id) { return -1; }
+        else if (x.id < y.id) { return 1; }
+        else { return 0; }
+    });
+    return arregloOrdenado;
 // Agrega un nuevo producto a la lista de productos
 function addProductToList(nombreProducto, descripcion, imagen, categoria, color, precio); {
     let nuevoProducto = {
@@ -20,6 +28,10 @@ function addProductToList(nombreProducto, descripcion, imagen, categoria, color,
         Precio: precio,
     };
     let productos = readJSONfile();
+    let ordenado = ordenar(productos);
+    let nuevoid = ordenado[0].id + 1;
+    nuevoProducto.id = nuevoid;
+    console.log(nuevoProducto);
     productos.push(nuevoProducto);
     saveJSONfile(productos);
 }
