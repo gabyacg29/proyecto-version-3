@@ -1,4 +1,5 @@
 const fs = require("fs");
+var path = require("path");
 
 // Lee el archivo Json
 function readJSONfile() {
@@ -6,6 +7,7 @@ function readJSONfile() {
     path.join(__dirname, "..") + "/data/products.json"
   );
   let productos = JSON.parse(archivo);
+  return productos;
 }
 // Guarda el json de productos
 function saveJSONfile(objetos) {
@@ -29,26 +31,26 @@ function ordenar(arreglo) {
 }
 // Agrega un nuevo producto a la lista de productos
 function addProductToList(
-  nombreProducto,
-  descripcion,
-  imagen,
-  categoria,
-  color,
-  precio
+  nombre,descripcion,imagen,categoria,color,precio
 ) {
+  console.log('entra a la funcion');
   let nuevoProducto = {
-    Nombre: nombreProducto,
+    Nombre: nombre,
     Descripcion: descripcion,
     Imagen: imagen,
     Categoria: categoria,
     Color: color,
     Precio: precio,
   };
-  let productos = readJSONfile();
-  let ordenado = ordenar(productos);
-  let nuevoid = ordenado[0].id + 1;
-  nuevoProducto.id = nuevoid;
   console.log(nuevoProducto);
+  let productos = readJSONfile();
+  if (productos.length > 0) {
+    let ordenado = ordenar(productos);
+    let nuevoid = ordenado[0].id + 1;
+    nuevoProducto.id = nuevoid;
+  } else{
+    nuevoProducto.id = 1;
+  }
   productos.push(nuevoProducto);
   saveJSONfile(productos);
 }

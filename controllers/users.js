@@ -5,25 +5,33 @@ let formularioIngreso = (req, res) => {
   let data = {
     Formulario: "UsuarioRegistrado",
   };
-  res.render("usuarios", data);
+  res.render("usuarios", { data: data });
 };
-
+// funcion para la validacion de ususario registrado
 let validacionUsuario = (req, res) => {
-  let { email, contrasenia } = req.body;
-  let usuarioExiste = modelUsers.Consulta(email);
-  if (usuarioExiste != null && usuarioExiste.Contrasenia == contrasenia) {
+  let { email, contrasenia } = req.body; // se toman los datos del formulario
+  let usuarioExistente = modelUsers.Consulta(email);
+  if (usuarioExistente != null && usuarioExistente.Contrasenia == contrasenia) {
+    let user = {
+      id: 1,
+      Nombre: "Nombre de Prueba",
+      Apellido: "Apellido de Prueba",
+      Email: "emailPrueba@gmail.com",
+      Categoria: "Cliente",
+      Imagen: "avatar-1591641006983",
+    };
+    req.session.user = user;
     res.redirect("/");
   } else {
     res.redirect("/users/login");
   }
 };
-
 // funcion para devolver el formulario de registro de nuevo usuario
 let formularioRegistro = (req, res) => {
   let data = {
     Formulario: "FormularioRegistro",
   };
-  res.render("usuarios", data);
+  res.render("usuarios", { data: data });
 };
 // funcion para realizar el registro de nuevo ususario
 let registrandoUsuario = (req, res) => {
@@ -49,14 +57,19 @@ let formularioEdicion = (req, res) => {
   // momentaneamente sin utilizar.
 };
 let detalleUsuario = (req, res) => {
-  let { email } = req.session.user;
-  let usuarioExiste = modelUsers.Consulta(email);
-  if (usuarioExiste != null) {
-    let data = {
-      Formulario: "MisDatos",
-      usuario: usuarioExiste,
-    };
-    res.render("usuarios", data);
+  console.log(req.session.user);
+  if (req.session.user) {
+    let { Email } = req.session.user;
+    let usuarioExiste = modelUsers.Consulta(Email);
+    if (usuarioExiste != null) {
+      let data = {
+        Formulario: "MisDatos",
+        usuario: usuarioExiste,
+      };
+      res.render("usuarios", { data: data });
+    } else {
+      res.redirect("/users/login");
+    }
   } else {
     res.redirect("/users/login");
   }

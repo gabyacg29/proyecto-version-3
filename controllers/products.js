@@ -1,14 +1,5 @@
-// var modelProducts = require('../data/products.js');
-// habilitar una vez Santiago haya armado los manipuladores de json
+var modelProducts = require('../data/products');
 
-// para borrar luego
-var modelProducts = {
-    Consulta: () => {return 0},
-    Alta: (datos) => {return 0},
-    Baja: (ID) => {return 0},
-    Modificacion: (ID, datos) => {return 0}
-};
-// Fin borrado
 // para borrar luego
 function prueba (res, req){
     res.send('corriendo');
@@ -23,15 +14,21 @@ function Individualizar (arrProductos, id) {
         }
     }
 };
-
+// funcion de consulta de todos los productos
 let consulta = (req, res) => {
     let productos = modelProducts.Consulta();
-    // res.render({productos: productos});
-    res.render('products', {title: 'Consulta de productos'});
+    let data = {
+        Formulario: 'GrillaProductos',
+        Productos: productos,
+    };
+    res.render('index',{ data: data });
 };
+
 let formularioAlta = (req, res) => {
-    // res.send('Formulario para Alta');
-    res.render('index', {title: 'Formulario de Alta de Producto'});
+    let data = {
+        Formulario: 'NuevoProducto',
+    };
+    res.render('formProducto', { data: data });
 };
 let detalleProducto = (req, res) => {
     let id = req.params.id;
@@ -41,8 +38,12 @@ let detalleProducto = (req, res) => {
     res.render('detalleProducto', {title: 'Detalle de Producto Individual'});
 };
 let crearProducto = (req, res) => {
-    let {nombreProducto,descripcion,imagen,categoria,color,precio} = req.body;
-    modelProducts.Alta(nombreProducto,descripcion,imagen,categoria,color,precio);
+    let {nombre,descripcion,categoria,color,precio} = req.body;
+    let imagen = req.file.filename;
+    console.log(req.body);
+    console.log(imagen);
+    modelProducts.Alta(nombre,descripcion,imagen,categoria,color,precio);
+    console.log('pasa la funcion');
     res.redirect('/products');
 };
 let formularioEdicion = (req, res) => {
