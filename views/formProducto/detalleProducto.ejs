@@ -1,0 +1,19 @@
+<form action="#" method="POST">
+  <div class="row align-items-center pt-5 pb-5 rounded beige">
+    <div class="col-12 col-md-6 text-center">
+      <img class="" src="<%= '/img/productos/'+data.Productos.Imagen %>" />
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group">
+        <p>Nombre: <%= data.Productos.Nombre %></p>
+        <p>Descripcion: <%= data.Productos.Descripcion %></p>
+        <p>Categoria: <%= data.Productos.Categoria %></p>
+        <p>Color: <%= data.Productos.Color %></p>
+        <p>Precio: <%= data.Productos.Precio %></p>
+      </div>
+      <button type="submit" class="btn btn-secondary">
+        Agregar al Carrito
+      </button>
+    </div>
+  </div>
+</form>

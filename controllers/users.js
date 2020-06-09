@@ -7,17 +7,25 @@ let formularioIngreso = (req, res) => {
   };
   res.render("usuarios", { data: data });
 };
-
+// funcion para la validacion de ususario registrado
 let validacionUsuario = (req, res) => {
-  let { mail, contrasenia } = req.body;
-  let usuarioExiste = modelUsers.Consulta(mail);
-  if (usuarioExiste != undefined && usuarioExiste.Contrasenia == contrasenia) {
-    res.redirect("/home");
+  let { email, contrasenia } = req.body; // se toman los datos del formulario
+  let usuarioExistente = modelUsers.Consulta(email);
+  if (usuarioExistente != null && usuarioExistente.Contrasenia == contrasenia) {
+    let user = {
+      id: usuarioExistente.id,
+      Nombre: usuarioExistente.Nombre,
+      Apellido: usuarioExistente.Apellido,
+      Email: usuarioExistente.Email,
+      Categoria: usuarioExistente.Categoria,
+      Imagen: usuarioExistente.Imagen,
+    };
+    req.session.user = user;
+    res.redirect("/");
   } else {
     res.redirect("/users/login");
   }
 };
-
 // funcion para devolver el formulario de registro de nuevo usuario
 let formularioRegistro = (req, res) => {
   let data = {
@@ -25,6 +33,7 @@ let formularioRegistro = (req, res) => {
   };
   res.render("usuarios", { data: data });
 };
+// funcion para realizar el registro de nuevo ususario
 let registrandoUsuario = (req, res) => {
   let {
     nombre,
@@ -33,24 +42,34 @@ let registrandoUsuario = (req, res) => {
     contrasenia,
     contrasenia2,
     categoria,
-    imagen,
   } = req.body;
+  let imagen = req.file.filename; // se toma el nombre del archivo
   if (contrasenia == contrasenia2) {
-    modelUsers.Alta(nombre, apellido, email, contrasenia, categoria, 'linkavatar');
+    modelUsers.Alta(nombre, apellido, email, contrasenia, categoria, imagen);
     res.redirect("/users/login");
-  } else{
+  } else {
     res.redirect("/users/register");
   }
 };
+//
 let formularioEdicion = (req, res) => {
   res.render("index", { title: "Formulario de Edicion" });
   // momentaneamente sin utilizar.
 };
 let detalleUsuario = (req, res) => {
-  let { email } = req.session.user;
-  let usuarioExiste = modelUsers.Consulta(mail);
-  if (usuarioExiste != undefined) {
-    res.render("index", { usuario: usuarioExiste });
+  console.log(req.session.user);
+  if (req.session.user) {
+    let { Email } = req.session.user;
+    let usuarioExiste = modelUsers.Consulta(Email);
+    if (usuarioExiste != null) {
+      let data = {
+        Formulario: "MisDatos",
+        usuario: usuarioExiste,
+      };
+      res.render("usuarios", { data: data });
+    } else {
+      res.redirect("/users/login");
+    }
   } else {
     res.redirect("/users/login");
   }

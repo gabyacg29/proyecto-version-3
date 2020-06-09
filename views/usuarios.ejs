@@ -4,21 +4,21 @@
   <div class="col-12 col-md-4 text-center pt-5 pb-5">
     <% if(data.Formulario == 'UsuarioRegistrado') { %>
         <h3 class="pb-3">Ingresar</h3>
-        <form action="/login" method="post">
+        <form action="login" method="post">
         <div class="form-group">
           <label for="nombre">Email:</label>
           <input type="email" name="email" id="email" class="form-control" />
         </div>
         <div class="form-group">
-          <label for="descripcion">Contraseña:</label>
-          <input class="form-control" type="password" name="contraseña" id="contraseña"/>
+          <label for="contrasenia">Contraseña:</label>
+          <input class="form-control" type="password" name="contrasenia" id="contrasenia"/>
         </div>
         <button type="submit" class="btn btn-primary mt-3">Confirmar</button>
       </form>
     <% } %>
     <% if(data.Formulario == 'FormularioRegistro') { %>
       <h3 class="pb-3">Registrarse</h3>
-        <form action="register" method="post" >
+        <form action="register" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input type="text" class="form-control" id="nombre" name="nombre"/>
@@ -47,12 +47,52 @@
             <div class="input-group justify-content-center align-items-center">
                 <label class="input-group-btn">
                     <span class="btn btn-secondary btn-file">
-                        Subir Imagen <input accept=".jpg,.png,.jpeg,.gif" name="imagen" type="file" id="Imagen" class="hidden">
+                        Subir Imagen <input accept=".jpg,.png,.jpeg,.gif" name="avatar" type="file" id="avatar" required class="hidden">
                     </span>
                 </label>
             </div>
           </div>
             <button type="submit" class="btn btn-success mt-3">Confirmar</button>
+        </form>
+    <% } %>
+    <% if(data.Formulario == 'MisDatos') { %>
+      <h3 class="pb-3">Mi Informacion</h3>
+        <form action="<%= data.usuario.id+'/edit' %>" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <img src="<%= '/img/avatar/'+data.usuario.Imagen %>">
+            <div class="input-group justify-content-center align-items-center">
+                <label class="input-group-btn">
+                    <span class="btn btn-secondary btn-file">
+                        Cambiar Imagen <input accept=".jpg,.png,.jpeg,.gif" name="avatar" type="file" id="avatar" required class="hidden">
+                    </span>
+                </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="<%= data.usuario.Nombre %>" required/>
+          </div>
+          <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" class="form-control" id="apellido" name="apellido" value="<%= data.usuario.Apellido %>" required/>
+          </div>
+          <div class="form-group">
+            <label for="mail">Email:</label>
+            <input type="email" class="form-control" id="mail" name="email" value="<%= data.usuario.Email %>" required/>
+          </div>
+          <div class="form-group">
+            <label for="contrasenia">Contraseña:</label>
+            <input type="password" class="form-control" id="contrasenia" name="contrasenia" required/>
+          </div>
+          <div class="form-group">
+            <label for="contrasenia2">Confirme Contraseña:</label>
+            <input type="password" class="form-control" id="contrasenia2" name="contrasenia2" required/>
+          </div>
+          <div class="form-group">
+            <label for="categoria">Categoria:</label>
+            <input type="text" class="form-control" id="categoria" name="categoria" value="<%= data.usuario.Categoria %>" required/>
+          </div>
+            <button type="submit" class="btn btn-success mt-3">Actualizar</button>
         </form>
     <% } %>
     </div>

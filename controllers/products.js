@@ -1,14 +1,5 @@
-// var modelProducts = require('../data/products.js');
-// habilitar una vez Santiago haya armado los manipuladores de json
+var modelProducts = require('../data/products');
 
-// para borrar luego
-var modelProducts = {
-    Consulta: () => {return 0},
-    Alta: (datos) => {return 0},
-    Baja: (ID) => {return 0},
-    Modificacion: (ID, datos) => {return 0}
-};
-// Fin borrado
 // para borrar luego
 function prueba (res, req){
     res.send('corriendo');
@@ -23,39 +14,64 @@ function Individualizar (arrProductos, id) {
         }
     }
 };
-
+// funcion de consulta de todos los productos
 let consulta = (req, res) => {
+    let user = {
+        Categoria: 'null',
+    };
+    if(req.session.user){
+        user = req.session.user;
+    }
     let productos = modelProducts.Consulta();
-    // res.render({productos: productos});
-    res.render('products', {title: 'Consulta de productos'});
+    let data = {
+        Formulario: 'GrillaProductos',
+        Productos: productos,
+        User: user
+    };
+    res.render('index',{ data: data });
 };
+// funcion que renderiza el formulario para cargar producto nuevo
 let formularioAlta = (req, res) => {
-    // res.send('Formulario para Alta');
-    res.render('index', {title: 'Formulario de Alta de Producto'});
+    let data = {
+        Formulario: 'NuevoProducto',
+    };
+    res.render('formProducto', { data: data });
 };
+// funcion que renderiza el formulario de detalle de producto
 let detalleProducto = (req, res) => {
     let id = req.params.id;
     let productos = modelProducts.Consulta();
     let productoIndividual = Individualizar(productos, id);
-    // res.send({producto: productoIndividual});
-    res.render('detalleProducto', {title: 'Detalle de Producto Individual'});
+    let data = {
+        Formulario: 'DetalleProducto',
+        Productos: productoIndividual,
+    };
+    res.render('formProducto',{ data: data });
 };
+// funcion con la que se crea nuevo producto a partir de post
 let crearProducto = (req, res) => {
-    let {nombreProducto,descripcion,imagen,categoria,color,precio} = req.body;
-    modelProducts.Alta(nombreProducto,descripcion,imagen,categoria,color,precio);
+    let {nombre,descripcion,categoria,color,precio} = req.body;
+    let imagen = req.file.filename;
+    modelProducts.Alta(nombre,descripcion,imagen,categoria,color,precio);
     res.redirect('/products');
 };
+// funcion para renderizar la vista de edicion de producto
 let formularioEdicion = (req, res) => {
     let id = req.params.id;
     let productos = modelProducts.Consulta();
     let productoIndividual = Individualizar(productos, id);
-    res.send({producto: productoIndividual});
+    let data = {
+        Formulario: 'EdicionProducto',
+        Productos: productoIndividual,
+    };
+    res.render('formProducto',{ data: data });
 };
+// funcion para cargar edicion del producto
 let editandoProducto = (req, res) => {
     let id = req.params.id;
-    let {nombreProducto,descripcion,imagen,categoria,color,precio} = req.body;
-    modelProducts.Modificacion(id,nombreProducto,descripcion,imagen,categoria,color,precio);
-    res.redirect('/products/'+id);
+    let {nombre,descripcion,categoria,color,precio} = req.body;
+    modelProducts.Modificacion(id,nombre,descripcion,categoria,color,precio);
+    res.redirect('/products');
 };
 let eliminandoProducto = (res, req) => {
     let id = req.params.id;
