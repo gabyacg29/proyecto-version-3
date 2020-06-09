@@ -5,6 +5,12 @@
     <% if(data.Formulario == 'NuevoProducto'){ %>
       <%- include('./formProducto/NuevoProducto.ejs') %>
     <% } %>
+    <% if(data.Formulario == 'EdicionProducto'){ %>
+      <%- include('./formProducto/modificaProducto.ejs') %>
+    <% } %>
+    <% if(data.Formulario == 'DetalleProducto'){ %>
+      <%- include('./formProducto/detalleProducto.ejs') %>
+    <% } %>
   </div>
 </div>
 <!-- Incluye Footer -->

@@ -1,11 +1,11 @@
 [
  {
+  "id": "4",
   "Nombre": "Nombre de Prueba",
-  "Descripcion": "des1",
+  "Descripcion": "prueba de modificacion 3",
   "Imagen": "producto-1591658272596",
   "Categoria": "cate",
   "Color": "tinto",
-  "Precio": "10.00",
-  "id": 4
+  "Precio": "10.00"
  }
 ]

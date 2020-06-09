@@ -62,9 +62,8 @@ function buscarTodos() {
 //Modificar producto
 function modificar(
   id,
-  nombreProducto,
+  nombre,
   descripcion,
-  imagen,
   categoria,
   color,
   precio
@@ -75,10 +74,10 @@ function modificar(
     let cursor = productos[i];
     if (id == cursor.id) {
       let producto = {
-        Id: id,
-        Nombre: nombreProducto,
+        id: id,
+        Nombre: nombre,
         Descripcion: descripcion,
-        Imagen: imagen,
+        Imagen: cursor.Imagen,
         Categoria: categoria,
         Color: color,
         Precio: precio,
@@ -91,7 +90,6 @@ function modificar(
   if (guardar == 1) {
     saveJSONfile(productos);
   }
-  return res.redirect("/productos");
 }
 
 // Eliminar producto

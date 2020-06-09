@@ -13,12 +13,12 @@ let validacionUsuario = (req, res) => {
   let usuarioExistente = modelUsers.Consulta(email);
   if (usuarioExistente != null && usuarioExistente.Contrasenia == contrasenia) {
     let user = {
-      id: 1,
-      Nombre: "Nombre de Prueba",
-      Apellido: "Apellido de Prueba",
-      Email: "emailPrueba@gmail.com",
-      Categoria: "Cliente",
-      Imagen: "avatar-1591641006983",
+      id: usuarioExistente.id,
+      Nombre: usuarioExistente.Nombre,
+      Apellido: usuarioExistente.Apellido,
+      Email: usuarioExistente.Email,
+      Categoria: usuarioExistente.Categoria,
+      Imagen: usuarioExistente.Imagen,
     };
     req.session.user = user;
     res.redirect("/");

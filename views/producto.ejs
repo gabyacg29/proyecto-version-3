@@ -1,8 +1,15 @@
-
+<div class="col-12">
+    <h2 class="products-title">Vinos</h2>
+</div>
 <% for( var i=0; i<(data.Productos.length); i++) { %>
 <div class="col-12 col-sm-6 col-lg-3">
     <section class="product-box">
-        <a href="<%=data.Productos[i].Id%>">
+        <% if(data.User.Categoria == 'Admin'){ %>
+            <a href="<%= '/products/'+data.Productos[i].id+'/edit' %>"></a>
+        <% } %>
+        <% if(data.User.Categoria != 'Admin'){ %>
+            <a href="<%= '/products/'+data.Productos[i].id%>"></a>
+        <% } %>
             <figure class="product-box_image">
                 <img src="<%= '/img/productos/'+data.Productos[i].Imagen %>" alt="imagen de producto">
             </figure>

@@ -1,14 +1,14 @@
 [
- {
-  "id": 1,
-  "Nombre": "Nombre de Prueba",
-  "Apellido": "Apellido de Prueba",
-  "Email": "emailPrueba@gmail.com",
-  "Contrasenia": "123",
-  "Categoria": "Cliente",
-  "Imagen": "avatar-1591641006983"
- },
- {
+  {
+    "id": 1,
+    "Nombre": "Nombre de Prueba",
+    "Apellido": "Apellido de Prueba",
+    "Email": "emailPrueba@gmail.com",
+    "Contrasenia": "123",
+    "Categoria": "Cliente",
+    "Imagen": "avatar-1591641006983"
+  },
+  {
     "id": 2,
     "Nombre": "Nombre de Prueba",
     "Apellido": "Apellido de Prueba",
@@ -16,5 +16,5 @@
     "Contrasenia": "123",
     "Categoria": "Administrador",
     "Imagen": "avatar-1591641006983"
-   }
+  }
 ]
