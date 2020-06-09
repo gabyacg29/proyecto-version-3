@@ -51,6 +51,13 @@ body {
    top:0;
    left:0;
    display:flex;
+   animation:modal 6s 0s;
+   visibility: hidden;
+   opacity: 0;
+ }
+ .modal-age{
+   padding:4%;
+   margin-bottom: 4%;
  }
  .contenido {
    margin: auto;
@@ -59,8 +66,31 @@ body {
    background-color: #712B42;
    color: white;
    text-align: center;
+  
  }
 #cerrar{
+  display: none;
+}
+
+#cerrar + label{
+  position: fixed;
+  color: white;
+  font-size: 25px;
+  z-index:50;
+  background: #712B42;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  right:10px;
+  cursor: pointer;
+  text-align: center;
+  animation:modal 6s 0s;
+  visibility: hidden;
+  opacity: 0;
+}
+#cerrar:checked+label,
+#cerrar:checked~.modal{
   display: none;
 }
 .contenido .submit{
@@ -69,6 +99,13 @@ body {
   color: black;
   border-radius:5px;
   width: 50px;
+}
+
+@keyframes modal{
+  100%{
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 /*----Boton buscar del menu----*/
@@ -86,17 +123,9 @@ body {
    height: 25px;
 }
 
-
-
-
-
 .banner{
   height: 300px;
 }
-
-
-
-
 
 .hidden{
   display: none;
