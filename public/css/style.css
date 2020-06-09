@@ -72,23 +72,22 @@ body {
   display: none;
 }
 
-#cerrar + label{
-  position: fixed;
-  color: white;
-  font-size: 25px;
-  z-index:50;
-  background: #712B42;
-  height: 40px;
-  width: 40px;
-  line-height: 40px;
-  border-radius: 50%;
-  right:10px;
-  cursor: pointer;
-  text-align: center;
-  animation:modal 6s 0s;
-  visibility: hidden;
-  opacity: 0;
-}
+#btn-cerrar{
+  
+    position: fixed;
+    z-index: 50;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    right: 10px;
+    cursor: pointer;
+    text-align: center;
+    animation: modal 6s 0s;
+    visibility: hidden;
+    opacity: 0;
+  }
+
 #cerrar:checked+label,
 #cerrar:checked~.modal{
   display: none;
