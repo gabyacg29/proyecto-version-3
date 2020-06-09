@@ -1,20 +1,29 @@
 [
-  {
-    "id": 1,
-    "Nombre": "Nombre de Prueba",
-    "Apellido": "Apellido de Prueba",
-    "Email": "emailPrueba@gmail.com",
-    "Contrasenia": "123",
-    "Categoria": "Cliente",
-    "Imagen": "avatar-1591641006983"
-  },
-  {
-    "id": 2,
-    "Nombre": "Nombre de Prueba",
-    "Apellido": "Apellido de Prueba",
-    "Email": "emailPrueba2@gmail.com",
-    "Contrasenia": "123",
-    "Categoria": "Administrador",
-    "Imagen": "avatar-1591641006983"
-  }
+ {
+  "id": 2,
+  "Nombre": "Nombre de Prueba",
+  "Apellido": "Apellido de Prueba",
+  "Email": "emailPrueba2@gmail.com",
+  "Contrasenia": "123",
+  "Categoria": "Administrador",
+  "Imagen": "avatar-1591641006983"
+ },
+ {
+  "id": 1,
+  "Nombre": "Nombre de Prueba",
+  "Apellido": "Apellido de Prueba",
+  "Email": "emailPrueba@gmail.com",
+  "Contrasenia": "123",
+  "Categoria": "Cliente",
+  "Imagen": "avatar-1591641006983"
+ },
+ {
+  "Nombre": "GABRIELA",
+  "Apellido": "Cinquemani",
+  "Email": "g.a.cinquemani@gmail.com",
+  "Contrasenia": "12345678",
+  "Categoria": "admin",
+  "Imagen": "avatar-1591710745295",
+  "id": 3
+ }
 ]
