@@ -130,10 +130,22 @@ body {
   display: none;
 }
 
+.imgProducto{
+  height: 300px;
+}
+.imgAvatar{
+  height: 250px;
+}
 
 
-
-
+@media (min-width: 768px){
+  .imgProducto{
+    height: 200px;
+  }
+  .imgAvatar{
+    height: 180px;
+  }
+}
 
 
 

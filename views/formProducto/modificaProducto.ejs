@@ -1,9 +1,9 @@
 <form action="<%= '/products/'+data.Productos.id+'?_method=PUT' %>" method="POST">
-  <div class="row align-items-center pt-5 pb-5 rounded beige">
-    <div class="col-12 col-md-6 text-center">
-      <img class="" src="<%= '/img/productos/'+data.Productos.Imagen %>" />
+  <div class="row align-items-center pt-5 pb-5 rounded">
+    <div class="col-12 col-md-6 text-center pt-5">
+      <img class="imgProducto" src="<%= '/img/productos/'+data.Productos.Imagen %>" />
     </div>
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-6 text-center text-md-left pt-5">
       <div class="form-group">
         <label for="nombre">Nombre:</label>
         <input
